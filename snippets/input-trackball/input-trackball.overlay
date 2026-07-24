@@ -16,35 +16,3 @@
         power-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_H0H1)>;
     };
 };
-
-// ペリフェラル（split経由）のリスナーを有効化
-&peripheral_listener {
-    status = "okay";
-};
-
-// excluded-positions以外のキーを押すとAMLが解除される。positionsは、lism.dtsiのpositionsと同じ順番で指定する必要がある。
-&zip_temp_layer {
-    excluded-positions = <
-        16 // J
-        17 // K
-        18 // L
-        19 // -
-    >;
-};
-
-// セントラルのリスナーを有効化し、deviceを紐付け
-&central_listener {
-    status = "okay";
-    device = <&trackball_central>;
-    input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_temp_layer 1 400>;
-
-    scroller {
-        layers = <3>;
-        input-processors = 
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
-            <&zip_scroll_scaler 1 16>;
-    };
-};
