@@ -35,34 +35,29 @@
 
 / {
     // 1. オートマウスレイヤー（AML）のプロセッサを新規作成
-
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
-
         // J, K, L, - など、クリック時にAMLを解除したくないキーのインデックス
-
-        excluded-positions = <33 34 35 36>;
+        excluded-positions = <16 17 18 19>;
     };
 };
 
 // 2. 正しいリスナー「&pointing_listener」に設定を追加する
-
 &pointing_listener {
     // ※ status や device はベースファイル（右手の.overlay）で
     // 既に設定されているため、ここに書く必要はありません。
 
-    input-processors =
-        // 必須：元から設定されているカーソルの上下左右反転,,
+    input-processors = 
+        // 必須：元から設定されているカーソルの上下左右反転
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        // 追記：ボールを動かしたらレイヤー1へ。400ms後に解除,,
+        // 追記：ボールを動かしたらレイヤー1へ。400ms後に解除
         <&zip_temp_layer 1 400>;
 
     // 追記：レイヤー3の時はスクロールとして動作させる設定
-
     scroller {
         layers = <3>;
-        input-processors =
+        input-processors = 
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_scroll_scaler 1 16>;
