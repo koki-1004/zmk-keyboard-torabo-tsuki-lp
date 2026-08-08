@@ -43,7 +43,7 @@
         require-prior-idle-ms = <200>;
 
         // J, K, L, - など、クリック時にAMLを解除したくないキーのインデックス
-        excluded-positions = <16 17 18 19>;
+        excluded-positions = <33 34 35 36>;
     };
 };
 
