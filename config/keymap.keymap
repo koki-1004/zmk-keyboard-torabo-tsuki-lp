@@ -68,6 +68,11 @@
     };
 };
 
+&mkp_input_listener {
+    // マウスキーを押したらレイヤー1（マウスレイヤー）を500ms（0.5秒）延長
+    input-processors = <&zip_temp_layer 1 500>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";
