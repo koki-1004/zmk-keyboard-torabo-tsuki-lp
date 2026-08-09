@@ -55,19 +55,19 @@
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
 
         maximize {
-            pattern = <GESTURE_UP>;
+            pattern = <GESTURE_DOWN>; // UPからDOWNに変更
             bindings = <&kp LG(UP)>;
         };
         minimize {
-            pattern = <GESTURE_DOWN>;
+            pattern = <GESTURE_UP>; // DOWNからUPに変更
             bindings = <&kp LG(DOWN)>;
         };
         snap_left {
-            pattern = <GESTURE_LEFT>;
+            pattern = <GESTURE_RIGHT>; // LEFTからRIGHTに変更
             bindings = <&kp LG(LEFT)>;
         };
         snap_right {
-            pattern = <GESTURE_RIGHT>;
+            pattern = <GESTURE_LEFT>; // RIGHTからLEFTに変更
             bindings = <&kp LG(RIGHT)>;
         };
     };
@@ -81,19 +81,19 @@
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
 
         new_tab {
-            pattern = <GESTURE_UP>;
+            pattern = <GESTURE_DOWN>; // UPからDOWNに変更
             bindings = <&kp LC(T)>;
         };
         close_tab {
-            pattern = <GESTURE_DOWN>;
+            pattern = <GESTURE_UP>; // DOWNからUPに変更
             bindings = <&kp LC(W)>;
         };
         prev_tab {
-            pattern = <GESTURE_LEFT>;
+            pattern = <GESTURE_RIGHT>; // LEFTからRIGHTに変更
             bindings = <&kp LC(LS(TAB))>;
         };
         next_tab {
-            pattern = <GESTURE_RIGHT>;
+            pattern = <GESTURE_LEFT>; // RIGHTからLEFTに変更
             bindings = <&kp LC(TAB)>;
         };
     };
