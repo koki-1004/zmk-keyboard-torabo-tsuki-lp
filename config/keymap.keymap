@@ -104,9 +104,6 @@
     // ※ status や device はベースファイル（右手の.overlay）で
     // 既に設定されているため、ここに書く必要はありません。
 
-    // ▼ ここをブロック化してレイヤーを指定する
-    default_pointer {
-        layers = <0 1 2 6>;
     input-processors = 
         // 必須：元から設定されているカーソルの上下左右反転
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
@@ -124,12 +121,16 @@
     };
     window_gesture_layer {
         layers = <4>;
-        input-processors = <&window_gesture>;
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+            <&window_gesture>;
     };
 
     tab_gesture_layer {
         layers = <5>;
-        input-processors = <&tab_gesture>;
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+            <&tab_gesture>;
     };
 };
 
