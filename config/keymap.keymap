@@ -155,7 +155,6 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_scroll_scaler 1 16>;
-            <&xy_zero 0 1>; // 直後のスクロールブレを排除
     };
     window_gesture_layer {
         layers = <4>;
