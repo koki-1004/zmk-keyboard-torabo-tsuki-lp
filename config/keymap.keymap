@@ -50,14 +50,51 @@
     window_gesture: window_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
-        bindings = <&kp LG(UP)>, <&kp LG(DOWN)>, <&kp LG(LEFT)>, <&kp LG(RIGHT)>;
+        
+        always-active;       // レイヤー有効時は常にジェスチャー状態にする
+        enable-eager-mode;   // ジェスチャー入力後、即座に実行する
+
+        maximize {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(UP)>;
+        };
+        minimize {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(DOWN)>;
+        };
+        snap_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LG(LEFT)>;
+        };
+        snap_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LG(RIGHT)>;
+        };
     };
 
     // タブ操作ジェスチャー (レイヤー5用)
     tab_gesture: tab_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
-        bindings = <&kp LC(T)>, <&kp LC(W)>, <&kp LC(LS(TAB))>, <&kp LC(TAB)>;
+        
+        always-active;       // レイヤー有効時は常にジェスチャー状態にする
+        enable-eager-mode;   // ジェスチャー入力後、即座に実行する
+
+        new_tab {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(T)>;
+        };
+        close_tab {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(W)>;
+        };
+        prev_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LS(TAB))>;
+        };
+        next_tab {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(TAB)>;
     };
 };
 
