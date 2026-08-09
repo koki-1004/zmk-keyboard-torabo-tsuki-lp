@@ -95,6 +95,7 @@
         next_tab {
             pattern = <GESTURE_RIGHT>;
             bindings = <&kp LC(TAB)>;
+        };
     };
 };
 
