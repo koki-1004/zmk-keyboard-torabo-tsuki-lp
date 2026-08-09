@@ -46,6 +46,14 @@
         // J, K, L, - など、クリック時にAMLを解除したくないキーのインデックス
         excluded-positions = <16 17 18 19>;
     };
+
+    // ★ ここに追加: 移動量を 0 にスケーリング（無効化）するプロセッサ
+    xy_zero: xy_zero {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X>, <INPUT_REL_Y>;
+    };
     // ウィンドウ操作ジェスチャー (レイヤー4用)
     window_gesture: window_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
@@ -53,8 +61,6 @@
         
         always-active;       // レイヤー有効時は常にジェスチャー状態にする
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
-        suppress-movement; // ★この1行を追加（ジェスチャー中のカーソル移動を無効化）
-        gesture-cooldown-ms = <300>; // クールダウン時間を設定して余韻を無視する
 
         maximize {
             pattern = <GESTURE_DOWN>; // UPからDOWNに変更
@@ -81,8 +87,6 @@
         
         always-active;       // レイヤー有効時は常にジェスチャー状態にする
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
-        suppress-movement; // ★この1行を追加（ジェスチャー中のカーソル移動を無効化）
-        gesture-cooldown-ms = <300>; // クールダウン時間を設定して余韻を無視する
 
         new_tab {
             pattern = <GESTURE_DOWN>; // UPからDOWNに変更
@@ -124,12 +128,14 @@
     };
     window_gesture_layer {
         layers = <4>;
-        input-processors = <&window_gesture>;
+        // ★ input-processors に <&xy_zero 0 1> を追加
+        input-processors = <&window_gesture>, <&xy_zero 0 1>;
     };
 
     tab_gesture_layer {
         layers = <5>;
-        input-processors = <&tab_gesture>;
+        // ★ こちらも同様に追加
+        input-processors = <&tab_gesture>, <&xy_zero 0 1>;
     };
 };
 
