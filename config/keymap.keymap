@@ -112,6 +112,7 @@
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
         // 追記：ボールを動かしたらレイヤー1へ。400ms後に解除
         <&zip_temp_layer 1 400>;
+    };
 
     // 追記：レイヤー3の時はスクロールとして動作させる設定
     scroller {
