@@ -118,6 +118,15 @@
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_scroll_scaler 1 16>;
     };
+    window_gesture_layer {
+        layers = <4>;
+        input-processors = <&window_gesture>;
+    };
+
+    tab_gesture_layer {
+        layers = <5>;
+        input-processors = <&tab_gesture>;
+    };
 };
 
 &mkp_input_listener {
