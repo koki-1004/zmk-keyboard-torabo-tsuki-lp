@@ -53,6 +53,7 @@
         
         always-active;       // レイヤー有効時は常にジェスチャー状態にする
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
+        suppress-movement; // ★この1行を追加（ジェスチャー中のカーソル移動を無効化）
 
         maximize {
             pattern = <GESTURE_DOWN>; // UPからDOWNに変更
@@ -79,6 +80,7 @@
         
         always-active;       // レイヤー有効時は常にジェスチャー状態にする
         enable-eager-mode;   // ジェスチャー入力後、即座に実行する
+        suppress-movement; // ★この1行を追加（ジェスチャー中のカーソル移動を無効化）
 
         new_tab {
             pattern = <GESTURE_DOWN>; // UPからDOWNに変更
