@@ -6,11 +6,9 @@
 // 必要なヘッダーファイルを読み込む
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
-// マウスジェスチャーヘッダー追加
-#include <mouse-gesture.dtsi>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 // OS設定を日本語キーボードのまま使用するための変換定義
+
 #define JP_DQUOTE       AT                // "
 #define JP_AMPERSAND    CARET             // &
 #define JP_QUOTE        AMPERSAND         // '
@@ -47,56 +45,6 @@
         // J, K, L, - など、クリック時にAMLを解除したくないキーのインデックス
         excluded-positions = <16 17 18 19>;
     };
-
-    // レイヤー4用（ウィンドウ操作）のジェスチャー定義
-    zip_gesture_win: zip_gesture_win {
-        compatible = "zmk,input-processor-mouse-gesture";
-        stroke-size = <300>;
-        enable-eager-mode;
-        always-active; // レイヤーが有効な間は常にジェスチャーを待機
-
-        maximize {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LG(UP)>;
-        };
-        minimize {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LG(DOWN)>;
-        };
-        snap_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LG(LEFT)>;
-        };
-        snap_right {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LG(RIGHT)>;
-        };
-    };
-
-    // レイヤー5用（タブ操作）のジェスチャー定義
-    zip_gesture_tab: zip_gesture_tab {
-        compatible = "zmk,input-processor-mouse-gesture";
-        stroke-size = <300>;
-        enable-eager-mode;
-        always-active; // レイヤーが有効な間は常にジェスチャーを待機
-
-        new_tab {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LC(T)>;
-        };
-        close_tab {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LC(W)>;
-        };
-        prev_tab {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LC(LS(TAB))>; // ※ または &kp LC(PG_UP)
-        };
-        next_tab {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LC(TAB)>;     // ※ または &kp LC(PG_DN)
-        };
-    };
 };
 
 // 2. 正しいリスナー「&pointing_listener」に設定を追加する
@@ -117,16 +65,6 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_scroll_scaler 1 16>;
-    };
-
-    gesture_win {
-        layers = <4>; // レイヤー4の時だけウィンドウ操作ジェスチャーを有効化
-        input-processors = <&zip_gesture_win>;
-    };
-
-    gesture_tab {
-        layers = <5>; // レイヤー5の時だけタブ操作ジェスチャーを有効化
-        input-processors = <&zip_gesture_tab>;
     };
 };
 
