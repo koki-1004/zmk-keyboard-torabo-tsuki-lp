@@ -6,6 +6,7 @@
 // 必要なヘッダーファイルを読み込む
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
+#include <mouse-gesture.dtsi>
 
 // OS設定を日本語キーボードのまま使用するための変換定義
 
@@ -44,6 +45,21 @@
 
         // J, K, L, - など、クリック時にAMLを解除したくないキーのインデックス
         excluded-positions = <16 17 18 19>;
+    };
+    // ウィンドウ操作ジェスチャー (レイヤー4用)
+    window_gesture: window_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        threshold = <20>;
+        bindings = <&kp LG(UP)>, <&kp LG(DOWN)>, <&kp LG(LEFT)>, <&kp LG(RIGHT)>;
+    };
+
+    // タブ操作ジェスチャー (レイヤー5用)
+    tab_gesture: tab_gesture {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        threshold = <20>;
+        bindings = <&kp LC(T)>, <&kp LC(W)>, <&kp LC(LS(TAB))>, <&kp LC(TAB)>;
     };
 };
 
