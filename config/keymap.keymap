@@ -109,7 +109,6 @@
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
         // 追記：ボールを動かしたらレイヤー1へ。400ms後に解除
         <&zip_temp_layer 1 400>;
-    };
 
     // 追記：レイヤー3の時はスクロールとして動作させる設定
     scroller {
@@ -121,16 +120,12 @@
     };
     window_gesture_layer {
         layers = <4>;
-        input-processors = 
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&window_gesture>;
+        input-processors = <&window_gesture>;
     };
 
     tab_gesture_layer {
         layers = <5>;
-        input-processors = 
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&tab_gesture>;
+        input-processors = <&tab_gesture>;
     };
 };
 
