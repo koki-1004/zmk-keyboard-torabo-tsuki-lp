@@ -49,7 +49,7 @@
         excluded-positions = <16 17 18 19>;
     };
 
-　　// レイヤー4用（ウィンドウ操作）のジェスチャー定義
+    // レイヤー4用（ウィンドウ操作）のジェスチャー定義
     zip_gesture_win: zip_gesture_win {
         compatible = "zmk,input-processor-mouse-gesture";
         stroke-size = <300>;
@@ -120,7 +120,7 @@
             <&zip_scroll_scaler 1 16>;
     };
 
-　　gesture_win {
+    gesture_win {
         layers = <4>; // レイヤー4の時だけウィンドウ操作ジェスチャーを有効化
         input-processors = <&zip_gesture_win>;
     };
