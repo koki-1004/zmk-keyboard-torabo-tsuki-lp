@@ -50,7 +50,6 @@
     window_gesture: window_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
-        threshold = <20>;
         bindings = <&kp LG(UP)>, <&kp LG(DOWN)>, <&kp LG(LEFT)>, <&kp LG(RIGHT)>;
     };
 
@@ -58,7 +57,6 @@
     tab_gesture: tab_gesture {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
-        threshold = <20>;
         bindings = <&kp LC(T)>, <&kp LC(W)>, <&kp LC(LS(TAB))>, <&kp LC(TAB)>;
     };
 };
