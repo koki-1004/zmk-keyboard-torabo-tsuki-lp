@@ -145,8 +145,8 @@
     input-processors = 
         // 必須：元から設定されているカーソルの上下左右反転
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        // 追記：ボールを動かしたらレイヤー1へ。400ms後に解除
-        <&zip_temp_layer 1 400>;
+        // 追記：ボールを動かしたらレイヤー1へ。10000ms後に解除
+        <&zip_temp_layer 1 10000>;
 
     // 追記：レイヤー3の時はスクロールとして動作させる設定
     scroller {
@@ -176,8 +176,14 @@
 };
 
 &mkp_input_listener {
-    // マウスキーを押したらレイヤー1（マウスレイヤー）を500ms（0.5秒）延長
-    input-processors = <&zip_temp_layer 1 500>;
+    // マウスキーを押したらレイヤー1（マウスレイヤー）を400ms（0.4秒）延長
+    input-processors = <&zip_temp_layer 1 400>;
+};
+};
+
+&mkp_input_listener {
+    // マウスキーを押すまで待機
+    input-processors = <&zip_temp_layer 1 250>;
 };
 
 / {
